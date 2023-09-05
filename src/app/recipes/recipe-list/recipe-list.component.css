@@ -1,0 +1,23 @@
+.row{
+    margin-top: 1em;
+}
+#recipe-list h5 {
+    padding-top: 1em;
+ }
+
+ #recipe-list img{
+    margin-top: 1em;
+ }
+
+ #recipe-list:hover{
+    background-color:#281e16;
+    color: #fdfefd;
+    border: #fdfefd;
+ }
+
+ #recipe-list{
+    margin-top: 1em;
+    border-radius: 10px;
+    border: 1px solid #281e16;;
+
+ }

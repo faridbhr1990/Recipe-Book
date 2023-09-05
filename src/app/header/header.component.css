@@ -1,5 +1,5 @@
 #navbar{
-    background-color:rgb(126, 119, 84);
+    background-color:#a8763e;
 }
 .navbar-brand{
     margin-left: 40px;
@@ -8,13 +8,13 @@
 }
 
 .nav-item .nav-link{
-    color: black;
+    color:#281e16;
     margin-left: 10px;
     font-weight: bold;
     transition: 0.5s;   
 }
 .nav-item .nav-link:hover{
-    color: black;
-    background-color: #f7f5f2;
+    background-color:#281e16;
     border-radius: 5px;
+    color: #fdfefd;
 }
