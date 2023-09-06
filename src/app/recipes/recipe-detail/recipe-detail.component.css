@@ -1,0 +1,16 @@
+.row img{
+    width: 80%;
+    height: auto;
+    padding-top: 0.5em;
+}
+
+.btn{
+    background-color:dimgray;
+    color: black;
+    font-weight: bold;
+  }
+ 
+  .btn:hover{
+    background-color:black;
+    color: #fdfefd;
+  }
