@@ -1,0 +1,32 @@
+.btn{
+    margin-top: 5px;
+    background-color:dimgray;
+   color: black;
+   font-weight: bold;
+   border: none;
+}
+.btn-danger{
+    margin-left: 5px;
+}
+
+
+.btn-danger:hover{
+    background-color: red;
+    color: white;
+}
+
+.btn-primary{
+    margin-left: 5px;
+}
+
+
+.btn-primary:hover{
+    
+    background-color: blue;
+    color: white;
+}
+
+.btn-success:hover{
+    background-color: green;
+    color: white;
+}
