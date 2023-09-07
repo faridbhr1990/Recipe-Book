@@ -14,13 +14,13 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="btn-group">
-            <button class="btn dropdown-toggle">Manage Recipe <span class="caret"></span></button>
+            <button class="btn dropdown-toggle" (click)="toggleDropdown()">Manage Recipe <span class="caret"></span></button>
         </div>
-        <ul class="dropdown-menu">
-            <li><a href="#">To Shopping List</a></li>
-            <li><a href="#">Edit Recipe</a></li>
-            <li><a href="#">Delete Recipe</a></li>
-        </ul>
+        <ul class="list-group-flush dropdown-menu" [ngClass]="{'show': isDropdownOpen}">
+            <li><a class="dropdown-item" href="#">To Shopping List</a></li>
+            <li><a class="dropdown-item" href="#">Edit Recipe</a></li>
+            <li><a class="dropdown-item" href="#">Delete Recipe</a></li>
+          </ul>
     </div>
 </div>
 <div class="row">

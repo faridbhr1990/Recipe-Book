@@ -9,6 +9,15 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
+import { Routes , RouterModule } from '@angular/router';
+
+
+
+
+const appRoutes: Routes = [
+  { path:'recipes' , component:RecipesComponent},
+  { path:'shopping-list' , component:ShoppingListComponent},
+]
 
 @NgModule({
   declarations: [
@@ -22,7 +31,8 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
     ShoppingEditComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

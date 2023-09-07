@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent {
+  isDropdownOpen: boolean = false;
+  isFetchDataActive: boolean = false;
 
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  activateFetchData() {
+    this.isFetchDataActive = true;
+  }
+
+  deactivateFetchData() {
+    this.isFetchDataActive = false;
+  }
 }
