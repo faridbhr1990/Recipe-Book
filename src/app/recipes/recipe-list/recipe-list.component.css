@@ -1,10 +1,6 @@
 .row{
     margin-top: 0.5em;
 }
-#recipe-list h5 {
-    padding-top: 1em;
- }
-
  .btn{
    background-color:dimgray;
    color: black;
@@ -16,19 +12,3 @@
    color: #fdfefd;
  }
 
- #recipe-list img{
-    margin-top: 1em;
- }
-
- #recipe-list:hover{
-    background-color:black;
-    color: #fdfefd;
- }
-
- #recipe-list{
-    margin-top: 1em;
-    border-radius: 10px;
-    border: black solid 2px;
-    color: black;
-
- }

@@ -1,1 +1,19 @@
-<p>recipe-item works!</p>
+<div class="row">
+    <div class="col-xs-12 list-group">
+        <a class="list-group-item" 
+        id="recipe-list"
+        (click)="onSelect()"
+        >
+            <div style="float: left;">
+                <h5>{{recipe.name}}</h5>
+                <p>{{recipe.description}}</p>
+            </div>
+            <span>
+                <img 
+                src="{{recipe.imagepath}}" 
+                alt="{{recipe.name}}"
+                class="img-thumbnail" style="max-height: 70px; float: right;">
+            </span>
+        </a>
+    </div>
+</div>
