@@ -10,11 +10,13 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-it
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { Routes , RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
 
 const appRoutes: Routes = [
+  { path:'' , redirectTo:'recipes' , pathMatch:'full'},
   { path:'recipes' , component:RecipesComponent},
   { path:'shopping-list' , component:ShoppingListComponent},
 ]
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
