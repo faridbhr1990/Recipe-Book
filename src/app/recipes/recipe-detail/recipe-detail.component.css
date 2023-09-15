@@ -15,3 +15,7 @@
     background-color:black;
     color: #fdfefd;
   }
+
+  .dropdown-item{
+    cursor: pointer;
+  }

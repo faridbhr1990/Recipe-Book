@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-xs-12 list-group">
-        <a class="list-group-item" 
+        <a class="list-group-item clearfix" 
         id="recipe-list"
-        (click)="onSelect()"
-        >
+        [routerLink]="[index]"
+        routerLinkActive="active">
             <div style="float: left;">
                 <h5>{{recipe.name}}</h5>
                 <p>{{recipe.description}}</p>
