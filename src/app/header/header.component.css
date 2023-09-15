@@ -26,3 +26,7 @@
     border-radius: 5px;
     color:  #fdfefd;
 }
+
+.dropdown-menu {
+    cursor: pointer;
+}
