@@ -18,9 +18,16 @@
     padding-top: 1em;
  }
 
-.active{
-   background-color:dimgray;
-   /* background-color: black; */
+ .active{
+   background-color: black;
    color: #fdfefd;
    cursor: pointer;
+ }
+
+.active h5{
+   color: #fdfefd;
+ }
+
+ .active p{
+   color: #fdfefd;
  }
