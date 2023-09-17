@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class ShoppingListComponent implements OnInit , OnDestroy{
 
   ingredients !: Ingredient[];
-  igSubscription !: Subscription
+  igSubscription !: Subscription;
 
   constructor(private slService:ShoppingListService){}
 
@@ -23,6 +23,11 @@ export class ShoppingListComponent implements OnInit , OnDestroy{
       }
     );
   }
+  
+  onSelectIngredient(index : number){
+    this.slService.ingredientIndexSelected.next(index);
+  }
+
 
   ngOnDestroy() {
     this.igSubscription.unsubscribe();
