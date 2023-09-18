@@ -19,8 +19,15 @@
  }
 
 .active{
-   background-color:dimgray;
-   /* background-color: black; */
+   background-color: black;
    color: #fdfefd;
    cursor: pointer;
+ }
+
+ .active h5{
+   color :#fdfefd
+ }
+
+ .active p {
+   color: #fdfefd;
  }
