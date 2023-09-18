@@ -2,8 +2,6 @@ import { Injectable } from "@angular/core";
 import { Ingredient } from "../shared/ingredient.model";
 import { Subject } from "rxjs";
 
-
-@Injectable()
 export class ShoppingListService{
     ingredientChanged = new Subject<Ingredient[]>();
     ingredientIndexSelected = new Subject<number>();
