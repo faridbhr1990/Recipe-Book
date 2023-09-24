@@ -19,7 +19,7 @@
  }
 
 
- .active{
+.active{
    background-color: black;
    color: #fdfefd;
    cursor: pointer;
@@ -29,7 +29,6 @@
 .active h5{
    color: #fdfefd;
  }
-
- .active p{
+ .active p {
    color: #fdfefd;
  }
