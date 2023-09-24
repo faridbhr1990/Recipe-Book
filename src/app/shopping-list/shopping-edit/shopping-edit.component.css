@@ -2,34 +2,20 @@ label{
     font-weight: bold;
 }
 .btn{
-    margin-top: 5px;
-    background-color:dimgray;
+   margin-top: 5px;
    color: black;
    font-weight: bold;
    border: none;
 }
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+
 .btn-danger{
     margin-left: 5px;
 }
 
-
-.btn-danger:hover{
-    background-color: red;
-    color: white;
-}
-
 .btn-primary{
     margin-left: 5px;
-}
-
-
-.btn-primary:hover{
-    
-    background-color: blue;
-    color: white;
-}
-
-.btn-success:hover{
-    background-color: green;
-    color: white;
 }

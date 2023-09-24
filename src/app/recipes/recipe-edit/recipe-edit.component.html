@@ -1,1 +1,102 @@
-<h3>recipe-edit works!</h3>
+<div class="row">
+    <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-success mt-2 me-1 mb-3" [disabled]="!editForm.valid">{{editMode ? 'Update' : 'Save'}}</button>
+                <button type="button" class="btn btn-danger mt-2 mb-3" (click)="onCancel()">Cancel</button> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 input-group">
+                <span class="input-group-text" for="name">Recipe Name:</span>
+                <input 
+                type="text" 
+                name="name" 
+                class="form-control" 
+                [(ngModel)]="recipeName"
+                required>
+            </div>
+        </div>       
+        <div class="row">
+            <div class="col-xs-12 input-group mt-2">
+                <span class="input-group-text" for="imageurl"> Image URL:</span>
+                <input 
+                type="text" 
+                class="form-control" 
+                name="imageurl" 
+                [(ngModel)]="recipeImgUrl"
+                required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 mt-2">
+                    <img src="{{recipeImgUrl}}" 
+                    class="mx-auto"
+                    ngModel
+                    required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 input-group mt-2">
+                <span class="input-group-text" for="description">Description: </span>
+                <textarea 
+                type="text" 
+                class="form-control" 
+                name="description" 
+                rows="6"
+                [(ngModel)]="recipeDescription"
+                required>
+                </textarea>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <button 
+                    class="btn  btn-danger" 
+                    type="button" 
+                    id="button" 
+                    (click)="onDeleteIngredient()"
+                    *ngIf="recipeIngredients.length > 0"
+                    >
+                    Delete</button>
+                    <input 
+                    type="text"  
+                    class="form-control" 
+                    placeholder="Ingredient Name" 
+                    name="ingredientName"
+                    [(ngModel)]="ingredientName">
+                    <input 
+                    type="number"  
+                    class="form-control"  
+                    placeholder="Ingredient Amount" 
+                    name="ingredientAmount"
+                    [(ngModel)]="ingredientAmount">
+                    <button 
+                    class="btn  btn-success" 
+                    type="button" 
+                    id="button" 
+                    (click)="onSubmitIngredient()"
+                    >
+                    {{ ingredientsEditMode ? 'Update' : 'Add'}}
+                    </button>
+                  </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12">
+            <ul class="list-group" >
+                <a
+                class="list-group-item"
+                style="cursor: pointer;"
+                *ngFor="let ingredient of recipeIngredients; let i = index"
+                (click)="onSelectIngredient(i)"
+                >
+                {{ingredient.name}} ({{ingredient.amount}})
+                </a>
+            </ul>
+            </div> 
+        </div>
+    </form>
+</div>

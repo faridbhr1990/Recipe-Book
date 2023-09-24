@@ -1,0 +1,23 @@
+.row img{
+    width: 80%;
+    height: auto;
+    max-height: 30em;
+    padding-top: 0.5em;
+}
+
+.btn{
+    color: black;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color:black;
+    color: #fdfefd;
+  }
+
+span {
+    font-weight: bold;
+    background-color: dimgray;
+    color: black;
+    width: 8em;
+}

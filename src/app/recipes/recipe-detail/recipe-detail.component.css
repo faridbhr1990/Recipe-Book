@@ -5,12 +5,13 @@
     padding-top: 0.5em;
 }
 
+
 .btn{
-    background-color:dimgray;
     color: black;
     font-weight: bold;
   }
  
+  
   .btn:hover{
     background-color:black;
     color: #fdfefd;
