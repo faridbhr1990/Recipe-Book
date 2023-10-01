@@ -29,4 +29,17 @@
 
 .dropdown-menu {
     cursor: pointer;
+    background-color:dimgray
 }
+
+.dropdown-menu .dropdown-item {
+    color: black;
+    font-weight: bold;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    color: #fdfefd;
+    font-weight: bold;
+    background-color:black;
+}
+
