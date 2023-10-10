@@ -5,6 +5,7 @@ import { RecipeService } from '../recipe.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Recipe } from '../recipe.model';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -22,7 +23,7 @@ export class RecipeEditComponent implements OnInit {
   recipeImgUrl ='';
   recipeDescription ='';
   ingredientToEdit !: Ingredient ;
-  ingredientName !: string ;
+  ingredientName : string = '';
   ingredientAmount !: number;
   ingredientSelectedID !: number;
 
@@ -32,6 +33,7 @@ export class RecipeEditComponent implements OnInit {
               private route : ActivatedRoute , 
               private recipeService : RecipeService,
               private router : Router,
+              private dataStorageService : DataStorageService
               ){}
 
 
@@ -64,12 +66,14 @@ onSubmit(myform : NgForm){
 
   if(this.editMode){
     this.recipeService.updateRecipe(this.id , newRecipe);
+    this.dataStorageService.storeRecipes();
     myform.reset();
     this.editMode = false;
     this.router.navigate( ['../'] , {relativeTo:this.route});
   }
   else {
     this.recipeService.addRecipe(newRecipe);
+    this.dataStorageService.storeRecipe(newRecipe);
     myform.reset();
     this.router.navigate( ['../'] , {relativeTo:this.route});
   }
@@ -92,7 +96,7 @@ onSelectIngredient(index : number){
 onSubmitIngredient() {
   const newIngredient = new Ingredient(this.ingredientName, this.ingredientAmount);
   if (this.ingredientName.trim() !== '' && this.ingredientAmount > 0) {
-    if (this.editMode) {
+    if (this.ingredientsEditMode) {
       this.recipeIngredients[this.ingredientSelectedID] = newIngredient;
     } else {
       this.recipeIngredients.push(newIngredient);

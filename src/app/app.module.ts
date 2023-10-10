@@ -14,7 +14,11 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipestartComponent } from './recipes/recipestart/recipestart.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+
+
+
 
 
 @NgModule({
@@ -28,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http'
     ShoppingListComponent,
     ShoppingEditComponent,
     RecipestartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,

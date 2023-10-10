@@ -2,8 +2,19 @@
     <form (ngSubmit)="onSubmit(editForm)" #editForm="ngForm">
         <div class="row">
             <div class="col-xs-12">
-                <button type="submit" class="btn btn-success mt-2 me-1 mb-3" [disabled]="!editForm.valid">{{editMode ? 'Update' : 'Save'}}</button>
-                <button type="button" class="btn btn-danger mt-2 mb-3" (click)="onCancel()">Cancel</button> 
+                <button type="submit" 
+                class="btn btn-success mt-2 me-1 mb-3" 
+                [disabled]="!editForm.valid || (recipeIngredients.length < 1)"
+                >
+                {{editMode ? 'Update' : 'Save'}}
+                </button>
+                <button type="button" 
+                class="btn btn-danger mt-2 mb-3" 
+                (click)="onCancel()"
+                >
+                Cancel
+                </button> 
+                <!-- <pre>{{recipeIngredients|json}}</pre> -->
             </div>
         </div>
         <div class="row">
@@ -25,15 +36,14 @@
                 class="form-control" 
                 name="imageurl" 
                 [(ngModel)]="recipeImgUrl"
-                required>
+                required
+                >
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 mt-2">
                     <img src="{{recipeImgUrl}}" 
-                    class="mx-auto"
-                    ngModel
-                    required>
+                    class="mx-auto">
             </div>
         </div>
         <div class="row">
@@ -57,7 +67,7 @@
                     type="button" 
                     id="button" 
                     (click)="onDeleteIngredient()"
-                    *ngIf="recipeIngredients.length > 0"
+                    *ngIf="recipeIngredients.length > 0 && ingredientName != ''"
                     >
                     Delete</button>
                     <input 

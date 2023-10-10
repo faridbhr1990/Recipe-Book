@@ -22,15 +22,9 @@
           <li class="nav-item">
             <a class="nav-link" style="cursor: pointer;">LogOut</a>
           </li>
-          
-          <li class="nav-item dropdown" #manageDropdown>
-            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Manage
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" (click)="onSaveData()">Save Data</a></li>
-              <li><a class="dropdown-item" (click)="onFetchData()">Fetch Data</a></li>
-            </ul>
+
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a>
           </li>
         </ul>
 
