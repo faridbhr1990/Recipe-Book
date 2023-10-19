@@ -3,8 +3,6 @@ import { Recipe } from '../recipe.model';
 import { ActivatedRoute , Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
-import { Breadcrumb } from 'src/app/breadcrumb/breadcrumb.interface';
-import { BreadcrumbService } from 'src/app/breadcrumb/breadcrumb.service';
 
 
 @Component({
@@ -19,8 +17,7 @@ export class RecipeDetailComponent implements OnInit{
   constructor(private recipeService:RecipeService 
     , private router : Router
     , private route : ActivatedRoute
-    , private dataStorageService : DataStorageService
-    , private breadcrumbService : BreadcrumbService){}
+    , private dataStorageService : DataStorageService){}
   
 
   ngOnInit(){
@@ -28,11 +25,6 @@ export class RecipeDetailComponent implements OnInit{
       (params : Params) => {
         this.id = +params['id'];
         this.recipe = this.recipeService.getRecipe(this.id);
-        const breadcrumb: Breadcrumb = {
-          label: this.recipe.name,
-          url: '/recipes/id'
-        };
-        this.breadcrumbService.addBreadcrumb(breadcrumb);
       }
     )
   }

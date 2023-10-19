@@ -6,16 +6,19 @@ import { RecipestartComponent } from "./recipes/recipestart/recipestart.componen
 import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.component";
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { RecipesResolverService } from "./recipes/recipes-resolver.service";
+import { AuthComponent } from "./auth/auth.component";
+import { AuthGuard } from "./auth/auth.guard";
 
 const appRoutes : Routes = [
-  { path:'' , redirectTo:'recipes' , pathMatch:'full' , data:{breadcrumb: 'Recipes' }},
-  { path:'recipes' , component:RecipesComponent ,data:{breadcrumb: 'Recipes' }, children:[
-    {path: '' , component:RecipestartComponent , data:{breadcrumb: 'Recipes' }},
-    {path: 'new' , component:RecipeEditComponent , data:{breadcrumb: 'New' }},
-    {path: ':id' , component:RecipeDetailComponent , resolve:[RecipesResolverService] , data:{breadcrumb: ':id' }},
-    {path: ':id/edit' , component:RecipeEditComponent , resolve:[RecipesResolverService], data:{breadcrumb: 'Edit' }},
+  { path:'' , redirectTo:'recipes' , pathMatch:'full'},
+  { path:'recipes' , component:RecipesComponent , canActivate:[AuthGuard], children:[
+    {path: '' , component:RecipestartComponent},
+    {path: 'new' , component:RecipeEditComponent},
+    {path: ':id' , component:RecipeDetailComponent , resolve:[RecipesResolverService]},
+    {path: ':id/edit' , component:RecipeEditComponent , resolve:[RecipesResolverService]},
   ]},
-  { path:'shopping-list' , component:ShoppingListComponent , data:{breadcrumb: 'Shopping-List' }},
+  { path:'shopping-list' , component:ShoppingListComponent},
+  { path:'auth' , component:AuthComponent},
 ]
 
 

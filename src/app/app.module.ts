@@ -14,8 +14,11 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipestartComponent } from './recipes/recipestart/recipestart.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { HttpClientModule } from '@angular/common/http';
-import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { AlertComponent } from './shared/alert/alert.component';
 
 
 
@@ -33,7 +36,9 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     ShoppingEditComponent,
     RecipestartComponent,
     RecipeEditComponent,
-    BreadcrumbComponent
+    AuthComponent,
+    LoadingSpinnerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService , {provide: HTTP_INTERCEPTORS , useClass: AuthInterceptorService , multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

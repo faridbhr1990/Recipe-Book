@@ -12,8 +12,4 @@ export class RecipeItemComponent{
   @Input() index !: number ;
 
   constructor(private recipeService : RecipeService){}
-
-  onSelect(){
-    this.recipeService.recipeSelected.emit(this.recipe);
-  }
 }

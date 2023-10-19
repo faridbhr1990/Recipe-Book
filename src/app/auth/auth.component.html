@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 mx-auto">
+        <div class="col-xs-12 col-md-6 mx-auto" *ngIf="isLoading">
+        <app-loading-spinner></app-loading-spinner>
+        </div>
+        <app-alert *ngIf="error" [message]="error" (close)="onHandleError()"></app-alert>
+        <form (ngSubmit)="OnSubmit(authForm)" #authForm="ngForm" *ngIf="!isLoading">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" 
+                  class="form-control" 
+                  id="email" 
+                  aria-describedby="emailHelp"
+                  ngModel
+                  name="email" 
+                  required
+                  email>
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input name="password" 
+                  type="password" 
+                  class="form-control" 
+                  id="password"
+                  ngModel
+                  required
+                  minlength="6"
+                  >
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">{{loggedIn ? 'LogIn' : 'Sign Up'}}</button>
+                <div>{{loggedIn ? 'You are not Registered yet? ' : 'You Registered Before?'}}
+                  <a style="cursor: pointer; color: blue;" (click)="switching()">
+                    {{loggedIn ? 'click to Sign Up ' : 'click to LogIn'}}
+                  </a>
+                  </div>
+              </form>
+    </div>
+</div>

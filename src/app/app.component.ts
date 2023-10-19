@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { BreadcrumbService } from './breadcrumb/breadcrumb.service';
-import { Breadcrumb } from './breadcrumb/breadcrumb.interface';
-import { ActivatedRoute } from '@angular/router';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 export class AppComponent {
   title = 'recipebook';
 
-  constructor(private breadcrumbService: BreadcrumbService , private activatedRoute : ActivatedRoute , private route:ActivatedRoute) { }
+  constructor(private authService : AuthService) { }
 
   ngOnInit() {
-    this.route?.firstChild?.data.subscribe(data => {
-      const x = data['breadcrumb'];
-      debugger 
-    });
-
-    
-    // const breadcrumb: Breadcrumb = {
-    //   label: ,
-    //   url: this.activatedRoute
-    // };
-    this.breadcrumbService.getBreadcrumbs();
+    this.authService.autoLogin();
   }
 }
