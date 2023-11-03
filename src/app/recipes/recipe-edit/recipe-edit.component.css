@@ -5,19 +5,25 @@
     padding-top: 0.5em;
 }
 
-.btn{
-    color: black;
+.btn-success{
+    color: black ;
+    background-color: #A2C663;
     font-weight: bold;
 }
 
-.btn:hover{
-    background-color:black;
-    color: #fdfefd;
+.btn-danger{
+ color: black;
+ font-weight: bold;
+}
+
+.btn-success:hover{
+    background-color:#8AB95C;
+    color: black;
   }
 
 span {
     font-weight: bold;
-    background-color: dimgray;
-    color: black;
+    background-color: black;
+    color: #E0E0E0;
     width: 8em;
 }

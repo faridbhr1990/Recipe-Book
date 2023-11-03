@@ -9,12 +9,13 @@
 .btn{
     color: black;
     font-weight: bold;
+    background-color: #A2C663;
   }
  
   
   .btn:hover{
-    background-color:black;
-    color: #fdfefd;
+    background-color:#8AB95C;
+    color: black;
   }
 
   .dropdown-item{

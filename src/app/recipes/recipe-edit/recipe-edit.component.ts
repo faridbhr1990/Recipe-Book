@@ -5,6 +5,7 @@ import { RecipeService } from '../recipe.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Recipe } from '../recipe.model';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { ToastService } from 'src/app/shared/toast.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -32,7 +33,8 @@ export class RecipeEditComponent implements OnInit {
               private route : ActivatedRoute , 
               private recipeService : RecipeService,
               private router : Router,
-              private dataStorageService : DataStorageService
+              private dataStorageService : DataStorageService,
+              private toastService : ToastService
               ){}
 
 
@@ -69,12 +71,14 @@ onSubmit(myform : NgForm){
     myform.reset();
     this.editMode = false;
     this.router.navigate( ['../'] , {relativeTo:this.route});
+    this.toastService.setToastData(true, 'Recipe Updated.');
   }
   else {
     this.recipeService.addRecipe(newRecipe);
     this.dataStorageService.storeRecipe(newRecipe);
     myform.reset();
     this.router.navigate( ['../'] , {relativeTo:this.route});
+    this.toastService.setToastData(true, 'New Recipe Added.');
   }
 }
 
@@ -97,21 +101,26 @@ onSubmitIngredient() {
   if (this.ingredientName.trim() !== '' && this.ingredientAmount > 0) {
     if (this.ingredientsEditMode) {
       this.recipeIngredients[this.ingredientSelectedID] = newIngredient;
+      this.toastService.setToastData(true, 'One Ingredient Added.');
     } else {
       this.recipeIngredients.push(newIngredient);
+      this.toastService.setToastData(true, 'One Ingredient Added.');
     }
     
     this.ingredientName = '';
     this.ingredientAmount = 0;
     this.ingredientsEditMode = false;
+    
   }
 }
 
 onDeleteIngredient() {
   this.recipeIngredients.splice(this.ingredientSelectedID , 1);
+  this.toastService.setToastData(true, 'One Ingredient Deleted.');
   this.ingredientName = '' ;
   this.ingredientAmount = 0 ;
   this.ingredientsEditMode = false ;
+  
 }
 
 }

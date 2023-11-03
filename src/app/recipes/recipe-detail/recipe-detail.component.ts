@@ -3,6 +3,7 @@ import { Recipe } from '../recipe.model';
 import { ActivatedRoute , Params, Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { ToastService } from 'src/app/shared/toast.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class RecipeDetailComponent implements OnInit{
   constructor(private recipeService:RecipeService 
     , private router : Router
     , private route : ActivatedRoute
-    , private dataStorageService : DataStorageService){}
+    , private dataStorageService : DataStorageService
+    , private toastService : ToastService){}
   
 
   ngOnInit(){
@@ -32,6 +34,7 @@ export class RecipeDetailComponent implements OnInit{
   onAddToShoppingList(){
      this.recipeService.addIngredients(this.recipe.ingredients);
      this.router.navigate(['/shopping-list']);
+     this.toastService.setToastData(true, 'Ingredients Added To Shopping List.');
   }
 
   onEditRecipe(){
@@ -41,5 +44,6 @@ export class RecipeDetailComponent implements OnInit{
   onDeleteRecipe(){
     this.dataStorageService.deleteRecipe(this.id);
     this.router.navigate(['recipes']);
+    this.toastService.setToastData(true, 'One Recipe Deleted.');
   }
 }

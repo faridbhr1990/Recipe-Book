@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
 import { NgForm } from '@angular/forms';
+import { ToastService } from 'src/app/shared/toast.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -15,7 +16,8 @@ export class ShoppingEditComponent implements OnInit{
   ingredientForEdit !: Ingredient ;
 
 
-  constructor(private slService:ShoppingListService){}
+  constructor(private slService:ShoppingListService
+             ,private toastService:ToastService ){}
 
   ngOnInit() {
     this.slService.ingredientIndexSelected.subscribe(
@@ -36,9 +38,11 @@ export class ShoppingEditComponent implements OnInit{
     const newingredient = new Ingredient(value.name , value.amount);
     if(this.editMode) {
       this.slService.updateIngredient(this.editedItemIndex , newingredient);
+      this.toastService.setToastData(true , 'Ingredient Updated');
     }
     else {
       this.slService.addIngredient(newingredient);
+      this.toastService.setToastData(true , 'New Ingredient Added');
     }
     this.editMode =false ;
     this.slForm.reset();
@@ -52,5 +56,6 @@ export class ShoppingEditComponent implements OnInit{
   onDelete(){
     this.onClear();
     this.slService.deleteIngredient(this.editedItemIndex);
+    this.toastService.setToastData(true , 'Ingredient Deleted');
   }
 }

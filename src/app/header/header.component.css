@@ -1,11 +1,12 @@
 #navbar{
-    background-color:dimgray;
+    background-color:#F5F5F5; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2)
 }
 .navbar-brand{
     margin-left: 40px;
     font-weight: bold;
     font-size: 25px;
-    color: black;
+    color: #FFD100 ;
 }
 
 .nav-item .nav-link{
@@ -16,30 +17,15 @@
 }
 .nav-item .nav-link:hover{
     
-    background-color:black;
+    background-color:#FFD100;
     border-radius: 5px;
-    color:  #fdfefd;
+    color: black;
 }
 
 .nav-item .active{
-    background-color:black;
+    background-color:#FFD100;
     border-radius: 5px;
-    color:  #fdfefd;
+    color:  black;
 }
 
-.dropdown-menu {
-    cursor: pointer;
-    background-color:dimgray
-}
-
-.dropdown-menu .dropdown-item {
-    color: black;
-    font-weight: bold;
-}
-
-.dropdown-menu .dropdown-item:hover {
-    color: #fdfefd;
-    font-weight: bold;
-    background-color:black;
-}
 

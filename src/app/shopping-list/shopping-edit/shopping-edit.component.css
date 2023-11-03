@@ -7,15 +7,23 @@ label{
    font-weight: bold;
    border: none;
 }
-.btn:hover{
-    background-color: black;
-    color: white;
-}
+.btn-success{
+    color: black;
+    font-weight: bold;
+    background-color: #A2C663;
+  }
+
+.btn-success:hover{
+    background-color:#8AB95C;
+    color: black;
+  }
 
 .btn-danger{
     margin-left: 5px;
+
 }
 
 .btn-primary{
     margin-left: 5px;
+    background-color: #FFD100;
 }

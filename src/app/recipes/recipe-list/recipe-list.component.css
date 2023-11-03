@@ -2,12 +2,13 @@
     margin-top: 0.5em;
 }
  .btn{
+   background-color: #A2C663;
    color: black;
    font-weight: bold;
  }
 
  .btn:hover{
-   background-color:black;
-   color: #fdfefd;
+   background-color:#8AB95C;
+   color: black ;
  }
 
