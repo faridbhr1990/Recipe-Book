@@ -1,5 +1,6 @@
-<div class="row">
-    <div class="col-xs-12 col-md-6 mx-auto d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<section id="home" class="container-fluid p-0 m-0">
+<div class="row m-0">
+  <div class="col-12 d-flex justify-content-center align-items-center">
         <div class="col-xs-12 col-md-6 mx-auto" *ngIf="isLoading">
         <app-loading-spinner></app-loading-spinner>
         </div>
@@ -29,11 +30,13 @@
                   >
                 </div>
                 <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">{{loggedIn ? 'LogIn' : 'Sign Up'}}</button>
-                <div>{{loggedIn ? 'You are not Registered yet? ' : 'You Registered Before?'}}
-                  <a style="cursor: pointer; color: blue;" (click)="switching()">
+                <div id="checker">{{loggedIn ? 'You are not Registered yet? ' : 'You Registered Before?'}}
+                  <a (click)="switching()">
                     {{loggedIn ? 'click to Sign Up ' : 'click to LogIn'}}
                   </a>
                   </div>
               </form>
     </div>
-</div>
+  </div> 
+</section>
+

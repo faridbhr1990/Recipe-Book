@@ -4,9 +4,9 @@
             <div class="col-xs-12">
                 <button type="submit" 
                 class="btn btn-success mt-2 me-1 mb-3" 
-                [disabled]="!editForm.valid || (recipeIngredients.length < 1)"
+                [disabled]="!editForm.valid || (viewModel.recipeIngredients.length < 1)"
                 >
-                {{editMode ? 'Update' : 'Save'}}
+                {{viewModel.editMode ? 'Update' : 'Save'}}
                 </button>
                 <button type="button" 
                 class="btn btn-danger mt-2 mb-3" 
@@ -23,7 +23,7 @@
                 type="text" 
                 name="name" 
                 class="form-control" 
-                [(ngModel)]="recipeName"
+                [(ngModel)]="viewModel.recipeName"
                 required>
             </div>
         </div>       
@@ -34,14 +34,14 @@
                 type="text" 
                 class="form-control" 
                 name="imageurl" 
-                [(ngModel)]="recipeImgUrl"
+                [(ngModel)]="viewModel.recipeImgUrl"
                 required
                 >
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 mt-2">
-                    <img src="{{recipeImgUrl}}" 
+                    <img src="{{viewModel.recipeImgUrl}}" 
                     class="mx-auto">
             </div>
         </div>
@@ -53,7 +53,7 @@
                 class="form-control" 
                 name="description" 
                 rows="6"
-                [(ngModel)]="recipeDescription"
+                [(ngModel)]="viewModel.recipeDescription"
                 required>
                 </textarea>
             </div>
@@ -66,7 +66,7 @@
                     type="button" 
                     id="button" 
                     (click)="onDeleteIngredient()"
-                    *ngIf="recipeIngredients.length > 0 && ingredientName != ''"
+                    *ngIf="viewModel.recipeIngredients.length > 0 && viewModel.ingredientName != ''"
                     >
                     Delete</button>
                     <input 
@@ -74,20 +74,20 @@
                     class="form-control" 
                     placeholder="Ingredient Name" 
                     name="ingredientName"
-                    [(ngModel)]="ingredientName">
+                    [(ngModel)]="viewModel.ingredientName">
                     <input 
                     type="number"  
                     class="form-control"  
                     placeholder="Ingredient Amount" 
                     name="ingredientAmount"
-                    [(ngModel)]="ingredientAmount">
+                    [(ngModel)]="viewModel.ingredientAmount">
                     <button 
                     class="btn  btn-success" 
                     type="button" 
                     id="button" 
                     (click)="onSubmitIngredient()"
                     >
-                    {{ ingredientsEditMode ? 'Update' : 'Add'}}
+                    {{ viewModel.ingredientsEditMode ? 'Update' : 'Add'}}
                     </button>
                   </div>
             </div>
@@ -99,7 +99,7 @@
                 <a
                 class="list-group-item"
                 style="cursor: pointer;"
-                *ngFor="let ingredient of recipeIngredients; let i = index"
+                *ngFor="let ingredient of viewModel.recipeIngredients; let i = index"
                 (click)="onSelectIngredient(i)"
                 >
                 {{ingredient.name}} ({{ingredient.amount}})

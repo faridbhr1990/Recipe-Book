@@ -6,6 +6,7 @@ import { Ingredient } from 'src/app/shared/ingredient.model';
 import { Recipe } from '../recipe.model';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { ToastService } from 'src/app/shared/toast.service';
+import { ViewModel } from './view.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -14,20 +15,7 @@ import { ToastService } from 'src/app/shared/toast.service';
 })
 export class RecipeEditComponent implements OnInit {
   @ViewChild('editForm') editForm !: NgForm ;
-  id !: number ;
-  editMode = false ;
-  ingredientsEditMode = false ;
-  recipeIngredients !: Ingredient[] ;
-  recipe !: Recipe ;
-  recipeName ='' ;
-  recipeImgUrl ='';
-  recipeDescription ='';
-  ingredientToEdit !: Ingredient ;
-  ingredientName : string = '';
-  ingredientAmount !: number;
-  ingredientSelectedID !: number;
-
-
+  viewModel = new ViewModel;
 
   constructor(
               private route : ActivatedRoute , 
@@ -42,34 +30,39 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit(){
    this.route.params.subscribe(
     (params : Params) => {
-      this.id = params['id'];
-      this.editMode = params['id'] != null ;
+      this.viewModel.id = params['id'];
+      this.viewModel.editMode = params['id'] != null ;
     }
   )
-  if(this.editMode){
-    this.recipe = this.recipeService.getRecipe(this.id);
-    this.recipeIngredients = this.recipe.ingredients;
-    this.recipeName = this.recipe.name;
-    this.recipeImgUrl = this.recipe.imagepath;
-    this.recipeDescription = this.recipe.description;
+  if(this.viewModel.editMode){
+    this.viewModel.recipe = this.recipeService.getRecipe(this.viewModel.id);
+    this.viewModel.recipeIngredients = this.viewModel.recipe.ingredients;
+    this.viewModel.recipeName = this.viewModel.recipe.name;
+    this.viewModel.recipeImgUrl = this.viewModel.recipe.imagepath;
+    this.viewModel.recipeDescription = this.viewModel.recipe.description;
   }
   else {
-    this.recipeIngredients = [];
+    this.viewModel.recipeIngredients = [];
   }
 }
 
 onSubmit(myform : NgForm){
   const value = myform.value;
-  this.recipeName = value.name;
-  this.recipeImgUrl = value.imageurl;
-  this.recipeDescription = value.description;
-  const newRecipe = new Recipe(this.recipeName , this.recipeDescription , this.recipeImgUrl , this.recipeIngredients);
+  this.viewModel.recipeName = value.name;
+  this.viewModel.recipeImgUrl = value.imageurl;
+  this.viewModel.recipeDescription = value.description;
+  const newRecipe = new Recipe
+  (this.viewModel.recipeName , 
+   this.viewModel.recipeDescription , 
+   this.viewModel.recipeImgUrl , 
+   this.viewModel.recipeIngredients
+   );
 
-  if(this.editMode){
-    this.recipeService.updateRecipe(this.id , newRecipe);
+  if(this.viewModel.editMode){
+    this.recipeService.updateRecipe(this.viewModel.id , newRecipe);
     this.dataStorageService.storeRecipes();
     myform.reset();
-    this.editMode = false;
+    this.viewModel.editMode = false;
     this.router.navigate( ['../'] , {relativeTo:this.route});
     this.toastService.setToastData(true, 'Recipe Updated.');
   }
@@ -83,43 +76,43 @@ onSubmit(myform : NgForm){
 }
 
 onCancel(){
-  this.editMode =false ;
+  this.viewModel.editMode =false ;
   this.router.navigate( ['../'] , {relativeTo:this.route});
 }
 
 onSelectIngredient(index : number){
- this.ingredientsEditMode = true ;
- this.ingredientSelectedID = index ;
- this.ingredientToEdit = this.recipeIngredients[index];
- this.ingredientName = this.ingredientToEdit.name ;
- this.ingredientAmount = this.ingredientToEdit.amount;
+ this.viewModel.ingredientsEditMode = true ;
+ this.viewModel.ingredientSelectedID = index ;
+ this.viewModel.ingredientToEdit = this.viewModel.recipeIngredients[index];
+ this.viewModel.ingredientName = this.viewModel.ingredientToEdit.name ;
+ this.viewModel.ingredientAmount = this.viewModel.ingredientToEdit.amount;
 
 }
 
 onSubmitIngredient() {
-  const newIngredient = new Ingredient(this.ingredientName, this.ingredientAmount);
-  if (this.ingredientName.trim() !== '' && this.ingredientAmount > 0) {
-    if (this.ingredientsEditMode) {
-      this.recipeIngredients[this.ingredientSelectedID] = newIngredient;
-      this.toastService.setToastData(true, 'One Ingredient Added.');
+  const newIngredient = new Ingredient(this.viewModel.ingredientName, this.viewModel.ingredientAmount);
+  if (this.viewModel.ingredientName.trim() !== '' && this.viewModel.ingredientAmount > 0) {
+    if (this.viewModel.ingredientsEditMode) {
+      this.viewModel.recipeIngredients[this.viewModel.ingredientSelectedID] = newIngredient;
+      this.toastService.setToastData(true, 'One Ingredient Updated.');
     } else {
-      this.recipeIngredients.push(newIngredient);
+      this.viewModel.recipeIngredients.push(newIngredient);
       this.toastService.setToastData(true, 'One Ingredient Added.');
     }
     
-    this.ingredientName = '';
-    this.ingredientAmount = 0;
-    this.ingredientsEditMode = false;
+    this.viewModel.ingredientName = '';
+    this.viewModel.ingredientAmount = 0;
+    this.viewModel.ingredientsEditMode = false;
     
   }
 }
 
 onDeleteIngredient() {
-  this.recipeIngredients.splice(this.ingredientSelectedID , 1);
+  this.viewModel.recipeIngredients.splice(this.viewModel.ingredientSelectedID , 1);
   this.toastService.setToastData(true, 'One Ingredient Deleted.');
-  this.ingredientName = '' ;
-  this.ingredientAmount = 0 ;
-  this.ingredientsEditMode = false ;
+  this.viewModel.ingredientName = '' ;
+  this.viewModel.ingredientAmount = 0 ;
+  this.viewModel.ingredientsEditMode = false ;
   
 }
 

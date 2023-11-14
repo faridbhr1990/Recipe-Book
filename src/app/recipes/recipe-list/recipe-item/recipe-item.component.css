@@ -3,8 +3,8 @@
  }
 
  #recipe-list:hover{
-    background-color:black;
-    color: #fdfefd;
+    background-color:#D1D1D1;
+    color: black;
     cursor: pointer;
  }
 
@@ -20,16 +20,16 @@
 
 
 .active{
-   background-color: black;
-   color: #fdfefd;
+   background-color: #D1D1D1;
+   color: black;
    cursor: pointer;
  }
 
  .active h5{
-   color :#fdfefd
+   color :black
  }
 
  .active p {
 
-   color: #fdfefd;
+   color: black;
  }
